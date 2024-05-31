@@ -1,5 +1,5 @@
 import User from "../models/user.js";
-import bcrypt from 'bcrypt';
+import bcryptjs from 'bcryptjs';
 import {getUserData} from '../routes/login.js';
 //to get user data from user for registering...
 
@@ -14,7 +14,7 @@ export const register = async (req, res) => {
       email,
       accountType,
     } = req.body;
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcryptjs.hash(password, 10);
     const newUser = new User({
       firstName,
       lastName,

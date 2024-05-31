@@ -1,7 +1,7 @@
 import express from 'express';
 import { validateLoginInput } from '../controllers/login.js';
 import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
+import bcryptjs from "bcryptjs";
 import user from '../models/user.js';
 import {keys} from '../config/keys.js';
 
@@ -36,7 +36,7 @@ const { errors, isValid} = validateLoginInput(req.body);
         
         const match = req.body.password;
         
-        bcrypt.compare(match, user.password);
+        bcryptjs.compare(match, user.password);
         if (match) {
             //if user matched then create jWT payload
             const payload = {
