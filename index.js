@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import { fileURLToPath } from 'url';
-import { dirname, join } from 'path'; // Import path module
+import { dirname, join } from 'path';
 
 import passport from 'passport';
 import userRoute from './routes/user.js';
