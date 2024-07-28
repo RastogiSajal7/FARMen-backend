@@ -25,7 +25,7 @@ export const register = async (req, res) => {
       accountType,
     });
     const user = await newUser.save();
-    const userId = user._id;
+    res.status(201).json({ message: "User registered successfully", userId: user._id });
 
   } catch (error) {
     res.status(500).json({
@@ -39,7 +39,7 @@ export const getAccount = async (req, res) =>{
       res.json(getUserData);
   }catch (error) {
       console.error("Error fetching account details:" , error);
-      res.status(500).josn({message: 'Cannot get user account details'});
+      res.status(500).json({message: 'Cannot get user account details'});
   }
   
 };

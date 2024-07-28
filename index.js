@@ -47,11 +47,6 @@ mongoose.connect(process.env.MONGODB_URL)
   .then(() => console.log("MongoDB connected!"))
   .catch((err) => console.error("Error while connecting to MongoDB:", err));
 
-//to test the api....
-app.get('/api/test', (req,res)=>{
-  console.log("test successful!");
-  res.status(200).json("success");
-});
 
 //Error handling of middleware
 app.use((err, req, res, next)=>{
@@ -60,6 +55,11 @@ app.use((err, req, res, next)=>{
 });
 
 //Routes...
+//to test the api....
+app.get('/', (req,res)=>{
+  res.status(200).json({message: message});
+});
+//rest routes
 app.use('/', userRoute); 
 app.use('/', productRoute);
 app.use('/', loginRoute);
