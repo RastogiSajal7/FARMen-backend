@@ -29,11 +29,7 @@ app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
 // Configure CORS
-app.use(cors({
-  origin: 'https://farmen.vercel.app',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+app.use(cors());
 
 // Serving static files
 app.use("/uploads", express.static(join(__dirname, "/uploads")));
