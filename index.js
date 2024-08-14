@@ -27,21 +27,22 @@ app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(morgan("common"));
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
+
+// Configure CORS
 app.use(cors({
-  origin: 'https://farmen.vercel.app/',
+  origin: 'https://farmen.vercel.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-
 // Serving static files
 app.use("/uploads", express.static(join(__dirname, "/uploads")));
 
-//Middlewares
+// Middlewares
 app.use(express.json()); // to parse JSON bodies
 app.use(passport.initialize()); // Passport middleware
 
-//Starting the server
+// Starting the server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log("Backend server is running on port", PORT);
@@ -52,19 +53,18 @@ mongoose.connect(process.env.MONGODB_URL)
   .then(() => console.log("MongoDB connected!"))
   .catch((err) => console.error("Error while connecting to MongoDB:", err));
 
-
-//Error handling of middleware
-app.use((err, req, res, next)=>{
+// Error handling middleware
+app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Middleware not Ok');
 });
 
-//Routes...
-//to test the api....
-app.get('/', (req,res)=>{
-  res.status(200).json({message: message});
+// Routes
+app.get('/', (req, res) => {
+  res.status(200).json({ message: 'Hello World!' });
 });
-//rest routes
+
+// REST routes
 app.use('/', userRoute); 
 app.use('/', productRoute);
 app.use('/', loginRoute);
