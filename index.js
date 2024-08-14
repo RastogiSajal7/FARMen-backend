@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
 // Configure CORS
 app.use(cors({
-  origin: 'https://farmen.vercel.app',
+  origin: 'https://farmen.vercel.app/',
 }));
 
 // Serving static files
