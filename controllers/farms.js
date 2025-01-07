@@ -1,23 +1,25 @@
 import user from "../models/user.js";
+import farm from "../models/farms.js";
 
-// export const createFarms = async (req, res) => {
-//   try {
-//     const {farmName, farmDesc} = req.body;
-//     const profileImg = req.file;
+export const createFarms = async (req, res) => {
+  try {
+    const {userId, farmName} = req.body;
 
-//     const newFarm = new user({
-//       farmName,
-//       farmDesc,
-//       profileImg: profileImg.path
-//     });
+    const newFarm = new farm({
+      userId,
+      farmName,
+    });
 
-//     const savedFarm = await newFarm.save();
-//     res.status(201).json(savedFarm);
-//   } catch (error) {
-//     console.error("Error creating farm:", error);
-//     throw error;
-//   }
-// };
+    console.log('FarmName: ', newFarm);
+
+    const savedFarm = await newFarm.save();
+    res.status(201).json(savedFarm);
+    console.log(savedFarm);
+  } catch (error) {
+    console.error("Error creating farm:", error);
+    throw error;
+  }
+};
 
 export const getFarms = async (req, res)=>{
   try {

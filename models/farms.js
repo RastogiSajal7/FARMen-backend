@@ -1,13 +1,10 @@
 import mongoose from 'mongoose';
 const farmSchema = new mongoose.Schema(
  {
+    userId: {
+        type: String,
+    },
     farmName: {
-        type: String
-    },
-    farmDesc: {
-        type: String
-    },
-    profileImg: {
         type: String
     },
  },
