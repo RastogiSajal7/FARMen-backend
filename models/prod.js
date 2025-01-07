@@ -6,6 +6,10 @@ const prodSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        farmName: {
+            type: String,
+            required: true,
+        },
         prodName: {
             type: String,
             required: true,

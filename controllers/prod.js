@@ -2,12 +2,13 @@ import Product from '../models/prod.js';
 
 export const addProduct = async (req, res) => {
     try {
-        const {userId, prodName, prodDetails, prodPrice } = req.body;
+        const {userId, farmName, prodName, prodDetails, prodPrice } = req.body;
         const prodImg = req.file; // This will contain file metadata
 
         // Create a new product with the uploaded file path
         const newProduct = new Product({
             userId: userId,
+            farmName: farmName,
             prodName,
             prodDetails,
             prodPrice,
